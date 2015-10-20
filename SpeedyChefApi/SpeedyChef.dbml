@@ -1,5 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SpeedyChef2" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SpeedyChef2" Class="SpeedyChefDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=titan.csse.rose-hulman.edu;Initial Catalog=SpeedyChef2;User ID=budocf" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SpeedyChef2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tool" Member="Tools">
+    <Type Name="Tool">
+      <Column Name="Toolname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Groupname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Tooldesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Tool_Oven" Member="Ovens" ThisKey="Toolname" OtherKey="Toolname" Type="Oven" />
+      <Association Name="Member_Group_Tool" Member="Member_Group" ThisKey="Groupname" OtherKey="Groupname" Type="Member_Group" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Agenda" Member="Agendas">
     <Type Name="Agenda">
       <Column Name="Agowner" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -8,15 +17,6 @@
       <Column Name="Agenddate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="Agenda_Agenda_Recipe" Member="Agenda_Recipes" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda_Recipe" />
       <Association Name="Member_Agenda" Member="Member" ThisKey="Agowner" OtherKey="Memname" Type="Member" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Tool" Member="Tools">
-    <Type Name="Tool">
-      <Column Name="Toolname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Groupname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Tooldesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="Tool_Oven" Member="Ovens" ThisKey="Toolname" OtherKey="Toolname" Type="Oven" />
-      <Association Name="Member_Group_Tool" Member="Member_Group" ThisKey="Groupname" OtherKey="Groupname" Type="Member_Group" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Agenda_Recipes" Member="Agenda_Recipes">

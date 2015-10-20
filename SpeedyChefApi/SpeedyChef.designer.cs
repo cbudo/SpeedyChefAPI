@@ -23,19 +23,19 @@ namespace SpeedyChefApi
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SpeedyChef2")]
-	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
+	public partial class SpeedyChefDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAgenda(Agenda instance);
-    partial void UpdateAgenda(Agenda instance);
-    partial void DeleteAgenda(Agenda instance);
     partial void InsertTool(Tool instance);
     partial void UpdateTool(Tool instance);
     partial void DeleteTool(Tool instance);
+    partial void InsertAgenda(Agenda instance);
+    partial void UpdateAgenda(Agenda instance);
+    partial void DeleteAgenda(Agenda instance);
     partial void InsertAgenda_Recipe(Agenda_Recipe instance);
     partial void UpdateAgenda_Recipe(Agenda_Recipe instance);
     partial void DeleteAgenda_Recipe(Agenda_Recipe instance);
@@ -68,42 +68,34 @@ namespace SpeedyChefApi
     partial void DeleteTask_Food_Item(Task_Food_Item instance);
     #endregion
 		
-		public DataClasses1DataContext() : 
+		public SpeedyChefDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["SpeedyChef2ConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection) : 
+		public SpeedyChefDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
+		public SpeedyChefDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public SpeedyChefDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public SpeedyChefDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<Agenda> Agendas
-		{
-			get
-			{
-				return this.GetTable<Agenda>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Tool> Tools
@@ -111,6 +103,14 @@ namespace SpeedyChefApi
 			get
 			{
 				return this.GetTable<Tool>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Agenda> Agendas
+		{
+			get
+			{
+				return this.GetTable<Agenda>();
 			}
 		}
 		
@@ -192,6 +192,185 @@ namespace SpeedyChefApi
 			{
 				return this.GetTable<Task_Food_Item>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tool")]
+	public partial class Tool : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Toolname;
+		
+		private string _Groupname;
+		
+		private string _Tooldesc;
+		
+		private EntitySet<Oven> _Ovens;
+		
+		private EntityRef<Member_Group> _Member_Group;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnToolnameChanging(string value);
+    partial void OnToolnameChanged();
+    partial void OnGroupnameChanging(string value);
+    partial void OnGroupnameChanged();
+    partial void OnTooldescChanging(string value);
+    partial void OnTooldescChanged();
+    #endregion
+		
+		public Tool()
+		{
+			this._Ovens = new EntitySet<Oven>(new Action<Oven>(this.attach_Ovens), new Action<Oven>(this.detach_Ovens));
+			this._Member_Group = default(EntityRef<Member_Group>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Toolname", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Toolname
+		{
+			get
+			{
+				return this._Toolname;
+			}
+			set
+			{
+				if ((this._Toolname != value))
+				{
+					this.OnToolnameChanging(value);
+					this.SendPropertyChanging();
+					this._Toolname = value;
+					this.SendPropertyChanged("Toolname");
+					this.OnToolnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Groupname", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Groupname
+		{
+			get
+			{
+				return this._Groupname;
+			}
+			set
+			{
+				if ((this._Groupname != value))
+				{
+					if (this._Member_Group.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnGroupnameChanging(value);
+					this.SendPropertyChanging();
+					this._Groupname = value;
+					this.SendPropertyChanged("Groupname");
+					this.OnGroupnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tooldesc", DbType="VarChar(255)")]
+		public string Tooldesc
+		{
+			get
+			{
+				return this._Tooldesc;
+			}
+			set
+			{
+				if ((this._Tooldesc != value))
+				{
+					this.OnTooldescChanging(value);
+					this.SendPropertyChanging();
+					this._Tooldesc = value;
+					this.SendPropertyChanged("Tooldesc");
+					this.OnTooldescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tool_Oven", Storage="_Ovens", ThisKey="Toolname", OtherKey="Toolname")]
+		public EntitySet<Oven> Ovens
+		{
+			get
+			{
+				return this._Ovens;
+			}
+			set
+			{
+				this._Ovens.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Group_Tool", Storage="_Member_Group", ThisKey="Groupname", OtherKey="Groupname", IsForeignKey=true)]
+		public Member_Group Member_Group
+		{
+			get
+			{
+				return this._Member_Group.Entity;
+			}
+			set
+			{
+				Member_Group previousValue = this._Member_Group.Entity;
+				if (((previousValue != value) 
+							|| (this._Member_Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Member_Group.Entity = null;
+						previousValue.Tools.Remove(this);
+					}
+					this._Member_Group.Entity = value;
+					if ((value != null))
+					{
+						value.Tools.Add(this);
+						this._Groupname = value.Groupname;
+					}
+					else
+					{
+						this._Groupname = default(string);
+					}
+					this.SendPropertyChanged("Member_Group");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Ovens(Oven entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tool = this;
+		}
+		
+		private void detach_Ovens(Oven entity)
+		{
+			this.SendPropertyChanging();
+			entity.Tool = null;
 		}
 	}
 	
@@ -395,185 +574,6 @@ namespace SpeedyChefApi
 		{
 			this.SendPropertyChanging();
 			entity.Agenda = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tool")]
-	public partial class Tool : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Toolname;
-		
-		private string _Groupname;
-		
-		private string _Tooldesc;
-		
-		private EntitySet<Oven> _Ovens;
-		
-		private EntityRef<Member_Group> _Member_Group;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnToolnameChanging(string value);
-    partial void OnToolnameChanged();
-    partial void OnGroupnameChanging(string value);
-    partial void OnGroupnameChanged();
-    partial void OnTooldescChanging(string value);
-    partial void OnTooldescChanged();
-    #endregion
-		
-		public Tool()
-		{
-			this._Ovens = new EntitySet<Oven>(new Action<Oven>(this.attach_Ovens), new Action<Oven>(this.detach_Ovens));
-			this._Member_Group = default(EntityRef<Member_Group>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Toolname", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Toolname
-		{
-			get
-			{
-				return this._Toolname;
-			}
-			set
-			{
-				if ((this._Toolname != value))
-				{
-					this.OnToolnameChanging(value);
-					this.SendPropertyChanging();
-					this._Toolname = value;
-					this.SendPropertyChanged("Toolname");
-					this.OnToolnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Groupname", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Groupname
-		{
-			get
-			{
-				return this._Groupname;
-			}
-			set
-			{
-				if ((this._Groupname != value))
-				{
-					if (this._Member_Group.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnGroupnameChanging(value);
-					this.SendPropertyChanging();
-					this._Groupname = value;
-					this.SendPropertyChanged("Groupname");
-					this.OnGroupnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tooldesc", DbType="VarChar(255)")]
-		public string Tooldesc
-		{
-			get
-			{
-				return this._Tooldesc;
-			}
-			set
-			{
-				if ((this._Tooldesc != value))
-				{
-					this.OnTooldescChanging(value);
-					this.SendPropertyChanging();
-					this._Tooldesc = value;
-					this.SendPropertyChanged("Tooldesc");
-					this.OnTooldescChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tool_Oven", Storage="_Ovens", ThisKey="Toolname", OtherKey="Toolname")]
-		public EntitySet<Oven> Ovens
-		{
-			get
-			{
-				return this._Ovens;
-			}
-			set
-			{
-				this._Ovens.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Group_Tool", Storage="_Member_Group", ThisKey="Groupname", OtherKey="Groupname", IsForeignKey=true)]
-		public Member_Group Member_Group
-		{
-			get
-			{
-				return this._Member_Group.Entity;
-			}
-			set
-			{
-				Member_Group previousValue = this._Member_Group.Entity;
-				if (((previousValue != value) 
-							|| (this._Member_Group.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Member_Group.Entity = null;
-						previousValue.Tools.Remove(this);
-					}
-					this._Member_Group.Entity = value;
-					if ((value != null))
-					{
-						value.Tools.Add(this);
-						this._Groupname = value.Groupname;
-					}
-					else
-					{
-						this._Groupname = default(string);
-					}
-					this.SendPropertyChanged("Member_Group");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Ovens(Oven entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tool = this;
-		}
-		
-		private void detach_Ovens(Oven entity)
-		{
-			this.SendPropertyChanging();
-			entity.Tool = null;
 		}
 	}
 	
