@@ -16,7 +16,7 @@ namespace SpeedyChefApi.Controllers
         // GET: /Search/
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "balls" };
+            return new string[] { "value1", "value2" };
         }
 
         // POST: /Search/
@@ -35,9 +35,11 @@ namespace SpeedyChefApi.Controllers
         }
 
         // SEARCH: /Search/
-        public string Search()
+        public ActionResult Search()
         {
-            return "hello";
+            SpeedyChefDataContext context = new SpeedyChefDataContext();
+            Member temp = context.Members.First();
+            return Json(temp, JsonRequestBehavior.AllowGet);
         }
     }
 }
