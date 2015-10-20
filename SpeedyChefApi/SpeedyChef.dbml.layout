@@ -1,182 +1,182 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 17.75" name="SpeedyChef">
-  <DataContextMoniker Name="/SpeedyChefDataContext" />
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 17.75" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
   <nestedChildShapes>
-    <classShape Id="c0ba7663-51eb-4556-9321-4b860c8e0bc9" absoluteBounds="7, 15.375, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Tool" />
+    <classShape Id="29de53b9-8998-4e2d-9300-6d1baf97a3ee" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClasses1DataContext/Agenda" />
       <nestedChildShapes>
-        <elementListCompartment Id="54b236d9-faa6-4c48-902f-25c3eab24173" absoluteBounds="7.015, 15.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="89061a78-fb16-4640-93b4-e0db23a92cf5" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="376f93a8-f1a1-4a9a-bda2-9006958e52f6" absoluteBounds="0.75, 0.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Agenda" />
+    <classShape Id="78c64a9f-0bb0-47ff-8f67-b850e3c1939a" absoluteBounds="7, 15.375, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/DataClasses1DataContext/Tool" />
       <nestedChildShapes>
-        <elementListCompartment Id="19d2915c-d6d2-4039-9795-c57585d18ac0" absoluteBounds="0.765, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="46087e5a-78f1-4fdd-b36d-4da993bc204c" absoluteBounds="7.015, 15.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6aab5ce2-8ce0-4dad-bc5c-879ce24382e4" absoluteBounds="3.5, 3.625, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Agenda_Recipe" />
+    <classShape Id="1ef7d937-ed58-432b-b011-d80cf13606c3" absoluteBounds="3.5, 3.625, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/DataClasses1DataContext/Agenda_Recipe" />
       <nestedChildShapes>
-        <elementListCompartment Id="0c022a62-f077-4c9e-8b79-f12683361ad3" absoluteBounds="3.515, 4.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b4079305-323f-4f67-9929-2000b1d4e6b4" absoluteBounds="3.515, 4.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="a9bd118c-4c98-401f-b7aa-85f9b3cd2bfe" absoluteBounds="3.5, 13.5, 2, 1.0016910807291666">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Food_Item" />
+    <classShape Id="fae5f7db-8ec4-4af4-a4e4-d2e3fcfb7463" absoluteBounds="3.5, 13.5, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/DataClasses1DataContext/Food_Item" />
       <nestedChildShapes>
-        <elementListCompartment Id="db9004d0-75dd-41bf-bc94-d0d7c3cf417e" absoluteBounds="3.515, 13.96, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ad03efd8-ef2e-44a5-a230-61b4c2f3b3c2" absoluteBounds="3.515, 13.96, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="2c42c21c-01c2-4a39-ac9d-d52078c30a74" absoluteBounds="1.5, 11.5, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Member" />
+    <classShape Id="797c3fc7-baf3-4a9a-925a-a19df9c18735" absoluteBounds="1.5, 11.5, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DataClasses1DataContext/Member" />
       <nestedChildShapes>
-        <elementListCompartment Id="bdb1ad0d-36f4-4d9f-b0e4-d1b6db0db799" absoluteBounds="1.5150000000000001, 11.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b54cdda6-009d-477b-82a1-e2bc47d8411f" absoluteBounds="1.5150000000000001, 11.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8b1d7dab-c2c8-45e2-bea1-429fc3e85035" absoluteBounds="6.25, 12.25, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Member_Allergen" />
+    <classShape Id="ed38da95-6fc2-4921-996c-9ae8cd59a9fc" absoluteBounds="6.25, 12.25, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/DataClasses1DataContext/Member_Allergen" />
       <nestedChildShapes>
-        <elementListCompartment Id="d28a3a18-f604-4cc6-9e7c-3e3ad87a2a22" absoluteBounds="6.265, 12.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="da54d28c-509a-43d7-9efc-e73821f790d2" absoluteBounds="6.265, 12.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3ddd5f7b-4046-47ba-b35f-53efb37e1303" absoluteBounds="4.25, 15.5, 2, 1.1939925130208309">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Member_Group" />
+    <classShape Id="d7fc3f07-583f-4092-ab5f-7ed5481f172c" absoluteBounds="4.25, 15.5, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/DataClasses1DataContext/Member_Group" />
       <nestedChildShapes>
-        <elementListCompartment Id="d20c78dc-93d5-474b-9d64-1c108c221398" absoluteBounds="4.265, 15.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="08d29b72-3518-48af-959f-9a63c0dffb0e" absoluteBounds="4.265, 15.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="933ee6a6-f30e-4fb9-a9c6-a014d746a5d1" absoluteBounds="9.75, 15.25, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Oven" />
+    <classShape Id="463a370a-5582-4852-8b4a-3da54b55907d" absoluteBounds="9.75, 15.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClasses1DataContext/Oven" />
       <nestedChildShapes>
-        <elementListCompartment Id="33cceaa8-dc0b-4481-94a3-417c948f42b4" absoluteBounds="9.765, 15.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="afda550f-c3af-47f2-ad5d-24cfe89d9c95" absoluteBounds="9.765, 15.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7a95aa05-029d-4f0e-900c-cce65b387986" absoluteBounds="0.75, 3.875, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Recipe" />
+    <classShape Id="56db441f-4c65-4d55-8928-312bfe393695" absoluteBounds="0.75, 3.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DataClasses1DataContext/Recipe" />
       <nestedChildShapes>
-        <elementListCompartment Id="6bbf3c90-3e3d-4f88-afb9-4480ea3ded65" absoluteBounds="0.765, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="749cbfdb-ac45-40ac-98d1-3f3835dfcae9" absoluteBounds="0.765, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="bcf9ac56-122f-4bc6-a9df-c355d5e391b1" absoluteBounds="6.25, 6.25, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Recipe_Task" />
+    <classShape Id="eb356d90-e3a3-4be4-9a24-8f4cba538795" absoluteBounds="6.25, 6.25, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DataClasses1DataContext/Recipe_Task" />
       <nestedChildShapes>
-        <elementListCompartment Id="a4138087-3353-49d8-a1fe-d5782c0591a9" absoluteBounds="6.265, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b485af19-03ac-45a3-bcfe-f1805673c06c" absoluteBounds="6.265, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="4d457f26-a225-485c-957b-66d04eb5776e" absoluteBounds="3.5, 8.125, 2, 1.7708968098958327">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Task" />
+    <classShape Id="5596c455-7a93-449d-bd4f-e653591cfc07" absoluteBounds="3.5, 8.125, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/DataClasses1DataContext/Task" />
       <nestedChildShapes>
-        <elementListCompartment Id="d8e25129-94a3-465d-9036-95231e211f20" absoluteBounds="3.515, 8.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3b6a7e96-0f15-40a2-957a-7d6316d6109c" absoluteBounds="3.515, 8.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="7240a95b-029e-4334-ab4b-7e0717c3c184" absoluteBounds="6.25, 8.375, 2, 1.1939925130208344">
-      <DataClassMoniker Name="/SpeedyChefDataContext/Task_Food_Item" />
+    <classShape Id="d966a41b-2491-4987-8c3f-e54b7e76f251" absoluteBounds="6.25, 8.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/DataClasses1DataContext/Task_Food_Item" />
       <nestedChildShapes>
-        <elementListCompartment Id="b928d36d-a1d8-4efa-9dd5-6bba0800caeb" absoluteBounds="6.265, 8.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="301336cd-c5a6-40a1-abb7-660b12e6673c" absoluteBounds="6.265, 8.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 1.53929768880208); (4.5 : 1.53929768880208); (4.5 : 3.625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Agenda/Agenda_Agenda_Recipe" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Agenda/Agenda_Agenda_Recipe" />
       <nodes>
-        <classShapeMoniker Id="376f93a8-f1a1-4a9a-bda2-9006958e52f6" />
-        <classShapeMoniker Id="6aab5ce2-8ce0-4dad-bc5c-879ce24382e4" />
+        <classShapeMoniker Id="29de53b9-8998-4e2d-9300-6d1baf97a3ee" />
+        <classShapeMoniker Id="1ef7d937-ed58-432b-b011-d80cf13606c3" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(3.1250025 : 11.5); (3.1250025 : 1.96519903320312); (2.75 : 1.96519903320312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Member/Member_Agenda" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Member/Member_Agenda" />
       <nodes>
-        <classShapeMoniker Id="2c42c21c-01c2-4a39-ac9d-d52078c30a74" />
-        <classShapeMoniker Id="376f93a8-f1a1-4a9a-bda2-9006958e52f6" />
+        <classShapeMoniker Id="797c3fc7-baf3-4a9a-925a-a19df9c18735" />
+        <classShapeMoniker Id="29de53b9-8998-4e2d-9300-6d1baf97a3ee" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(4.5 : 13.5); (4.5 : 12.8749995); (5.79166666666667 : 12.8749995 : JumpStart); (5.95833333333333 : 12.8749995 : JumpEnd); (6.25 : 12.8749995)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Food_Item/Food_Item_Member_Allergen" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Food_Item/Food_Item_Member_Allergen" />
       <nodes>
-        <classShapeMoniker Id="a9bd118c-4c98-401f-b7aa-85f9b3cd2bfe" />
-        <classShapeMoniker Id="8b1d7dab-c2c8-45e2-bea1-429fc3e85035" />
+        <classShapeMoniker Id="fae5f7db-8ec4-4af4-a4e4-d2e3fcfb7463" />
+        <classShapeMoniker Id="ed38da95-6fc2-4921-996c-9ae8cd59a9fc" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(3.5 : 12.4719962565104); (5.79166666666667 : 12.4719962565104 : JumpStart); (5.95833333333333 : 12.4719962565104 : JumpEnd); (6.25 : 12.4719962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Member/Member_Member_Allergen" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Member/Member_Member_Allergen" />
       <nodes>
-        <classShapeMoniker Id="2c42c21c-01c2-4a39-ac9d-d52078c30a74" />
-        <classShapeMoniker Id="8b1d7dab-c2c8-45e2-bea1-429fc3e85035" />
+        <classShapeMoniker Id="797c3fc7-baf3-4a9a-925a-a19df9c18735" />
+        <classShapeMoniker Id="ed38da95-6fc2-4921-996c-9ae8cd59a9fc" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.031252 : 13.5); (5.031252 : 13.18749975); (5.72993644826723 : 13.18749975 : JumpStart); (5.89660311493389 : 13.18749975 : JumpEnd); (6.25 : 13.18749975)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Food_Item/Food_Item_Member_Allergen1" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Food_Item/Food_Item_Member_Allergen1" />
       <nodes>
-        <classShapeMoniker Id="a9bd118c-4c98-401f-b7aa-85f9b3cd2bfe" />
-        <classShapeMoniker Id="8b1d7dab-c2c8-45e2-bea1-429fc3e85035" />
+        <classShapeMoniker Id="fae5f7db-8ec4-4af4-a4e4-d2e3fcfb7463" />
+        <classShapeMoniker Id="ed38da95-6fc2-4921-996c-9ae8cd59a9fc" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(6.25 : 16.0969962565104); (7 : 16.0969962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Member_Group/Member_Group_Tool" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Member_Group/Member_Group_Tool" />
       <nodes>
-        <classShapeMoniker Id="3ddd5f7b-4046-47ba-b35f-53efb37e1303" />
-        <classShapeMoniker Id="c0ba7663-51eb-4556-9321-4b860c8e0bc9" />
+        <classShapeMoniker Id="d7fc3f07-583f-4092-ab5f-7ed5481f172c" />
+        <classShapeMoniker Id="78c64a9f-0bb0-47ff-8f67-b850e3c1939a" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.46875 : 12.6939925130208); (2.46875 : 16.0969962565104); (4.25 : 16.0969962565104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Member/Member_Member_Group" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Member/Member_Member_Group" />
       <nodes>
-        <classShapeMoniker Id="2c42c21c-01c2-4a39-ac9d-d52078c30a74" />
-        <classShapeMoniker Id="3ddd5f7b-4046-47ba-b35f-53efb37e1303" />
+        <classShapeMoniker Id="797c3fc7-baf3-4a9a-925a-a19df9c18735" />
+        <classShapeMoniker Id="d7fc3f07-583f-4092-ab5f-7ed5481f172c" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(6.25 : 16.6930730572416); (6.625 : 17.0680730572416); (6.625 : 17.2035953776042); (9.375 : 17.2035953776042); (9.75 : 16.8285953776042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Member_Group/Member_Group_Oven" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Member_Group/Member_Group_Oven" />
       <nodes>
-        <classShapeMoniker Id="3ddd5f7b-4046-47ba-b35f-53efb37e1303" />
-        <classShapeMoniker Id="933ee6a6-f30e-4fb9-a9c6-a014d746a5d1" />
+        <classShapeMoniker Id="d7fc3f07-583f-4092-ab5f-7ed5481f172c" />
+        <classShapeMoniker Id="463a370a-5582-4852-8b4a-3da54b55907d" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(9 : 16.0681469726563); (9.75 : 16.0681469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Tool/Tool_Oven" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Tool/Tool_Oven" />
       <nodes>
-        <classShapeMoniker Id="c0ba7663-51eb-4556-9321-4b860c8e0bc9" />
-        <classShapeMoniker Id="933ee6a6-f30e-4fb9-a9c6-a014d746a5d1" />
+        <classShapeMoniker Id="78c64a9f-0bb0-47ff-8f67-b850e3c1939a" />
+        <classShapeMoniker Id="463a370a-5582-4852-8b4a-3da54b55907d" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.75 : 4.56814697265625); (3.04166916666667 : 4.56814697265625 : JumpStart); (3.20833583333333 : 4.56814697265625 : JumpEnd); (3.5 : 4.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Recipe/Recipe_Agenda_Recipe" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Recipe/Recipe_Agenda_Recipe" />
       <nodes>
-        <classShapeMoniker Id="7a95aa05-029d-4f0e-900c-cce65b387986" />
-        <classShapeMoniker Id="6aab5ce2-8ce0-4dad-bc5c-879ce24382e4" />
+        <classShapeMoniker Id="56db441f-4c65-4d55-8928-312bfe393695" />
+        <classShapeMoniker Id="1ef7d937-ed58-432b-b011-d80cf13606c3" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(1.75 : 5.2612939453125); (1.75 : 6.84699625651042); (2.19791916666667 : 6.84699625651042 : JumpStart); (2.36458583333333 : 6.84699625651042 : JumpEnd); (3.04166916666667 : 6.84699625651042 : JumpStart); (3.20833583333333 : 6.84699625651042 : JumpEnd); (6.25 : 6.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Recipe/Recipe_Recipe_Task" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Recipe/Recipe_Recipe_Task" />
       <nodes>
-        <classShapeMoniker Id="7a95aa05-029d-4f0e-900c-cce65b387986" />
-        <classShapeMoniker Id="bcf9ac56-122f-4bc6-a9df-c355d5e391b1" />
+        <classShapeMoniker Id="56db441f-4c65-4d55-8928-312bfe393695" />
+        <classShapeMoniker Id="eb356d90-e3a3-4be4-9a24-8f4cba538795" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(4.5 : 8.125); (4.5 : 7.17674688476563); (6.25 : 7.17674688476563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Task/Task_Recipe_Task" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Task/Task_Recipe_Task" />
       <nodes>
-        <classShapeMoniker Id="4d457f26-a225-485c-957b-66d04eb5776e" />
-        <classShapeMoniker Id="bcf9ac56-122f-4bc6-a9df-c355d5e391b1" />
+        <classShapeMoniker Id="5596c455-7a93-449d-bd4f-e653591cfc07" />
+        <classShapeMoniker Id="eb356d90-e3a3-4be4-9a24-8f4cba538795" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.2812525 : 5.2612939453125); (2.2812525 : 9.01044840494792); (3.04166916666667 : 9.01044840494792 : JumpStart); (3.20833583333333 : 9.01044840494792 : JumpEnd); (3.5 : 9.01044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Recipe/Recipe_Task" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Recipe/Recipe_Task" />
       <nodes>
-        <classShapeMoniker Id="7a95aa05-029d-4f0e-900c-cce65b387986" />
-        <classShapeMoniker Id="4d457f26-a225-485c-957b-66d04eb5776e" />
+        <classShapeMoniker Id="56db441f-4c65-4d55-8928-312bfe393695" />
+        <classShapeMoniker Id="5596c455-7a93-449d-bd4f-e653591cfc07" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 13.5007695316006); (5.875 : 13.1257695316006); (5.875 : 9.94399251302083); (6.25 : 9.56899251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Food_Item/Food_Item_Task_Food_Item" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Food_Item/Food_Item_Task_Food_Item" />
       <nodes>
-        <classShapeMoniker Id="a9bd118c-4c98-401f-b7aa-85f9b3cd2bfe" />
-        <classShapeMoniker Id="7240a95b-029e-4334-ab4b-7e0717c3c184" />
+        <classShapeMoniker Id="fae5f7db-8ec4-4af4-a4e4-d2e3fcfb7463" />
+        <classShapeMoniker Id="d966a41b-2491-4987-8c3f-e54b7e76f251" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(5.5 : 8.94074375651042); (6.25 : 8.94074375651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/SpeedyChefDataContext/Task/Task_Task_Food_Item" />
+      <AssociationMoniker Name="/DataClasses1DataContext/Task/Task_Task_Food_Item" />
       <nodes>
-        <classShapeMoniker Id="4d457f26-a225-485c-957b-66d04eb5776e" />
-        <classShapeMoniker Id="7240a95b-029e-4334-ab4b-7e0717c3c184" />
+        <classShapeMoniker Id="5596c455-7a93-449d-bd4f-e653591cfc07" />
+        <classShapeMoniker Id="d966a41b-2491-4987-8c3f-e54b7e76f251" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>
