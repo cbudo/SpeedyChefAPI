@@ -23,7 +23,7 @@ namespace SpeedyChefApi
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SpeedyChef2")]
-	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
+	public partial class SpeedyChefDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -68,31 +68,31 @@ namespace SpeedyChefApi
     partial void DeleteTask_Food_Item(Task_Food_Item instance);
     #endregion
 		
-		public DataClasses1DataContext() : 
+		public SpeedyChefDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["SpeedyChef2ConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection) : 
+		public SpeedyChefDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection) : 
+		public SpeedyChefDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public SpeedyChefDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public DataClasses1DataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public SpeedyChefDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
