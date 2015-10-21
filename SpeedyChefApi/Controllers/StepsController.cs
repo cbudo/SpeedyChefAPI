@@ -18,5 +18,13 @@ namespace SpeedyChefApi.Controllers
             temp.Add("Step 3");
             return temp;
         }
+
+        // GET: /dbtest/
+        public ActionResult dbtest()
+        {
+            SpeedyChefDataContext context = new SpeedyChefDataContext();
+            Member temp = context.Members.First();
+            return Json(temp, JsonRequestBehavior.AllowGet);
+        }
 	}
 }
