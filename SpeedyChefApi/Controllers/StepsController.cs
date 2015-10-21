@@ -24,7 +24,7 @@ namespace SpeedyChefApi.Controllers
         public ActionResult dbtest()
         {
             SpeedyChefDataContext context = new SpeedyChefDataContext();
-            Member temp = context.Members.First();
+            string temp = context.Members.Select(m=>m.Memname).First();
             return Json(temp, JsonRequestBehavior.AllowGet);
         }
 	}
