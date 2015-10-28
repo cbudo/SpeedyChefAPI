@@ -47,9 +47,10 @@ namespace SpeedyChefApi.Controllers
         public JsonResult getUserCalendar(string user, DateTime date)
         {
             JsonResult json = new JsonResult();
+            //Models.CalendarScreen calScreen = new Models.CalScreen();
             Models.Member member = new Models.Member();
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
-            member.memname = scdc.Members.Where(m => m.Memname == user).Select(m=>m.Memname).First();
+            
             // Don't exactly know what I am doing yet, but might as well get started.
 
             return json;
