@@ -130,4 +130,11 @@
       <Association Name="Task_Task_Food_Item" Member="Task" ThisKey="Taskid" OtherKey="Taskid" Type="Task" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="db_owner.SearchSingleKeyword" Method="SearchSingleKeyword">
+    <Parameter Name="keyword" Type="System.String" DbType="NVarChar(1)" />
+    <ElementType Name="SearchSingleKeywordResult">
+      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

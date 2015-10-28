@@ -215,6 +215,13 @@ namespace SpeedyChefApi
 				return this.GetTable<Task_Food_Item>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.SearchSingleKeyword")]
+		public ISingleResult<SearchSingleKeywordResult> SearchSingleKeyword([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(1)")] string keyword)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), keyword);
+			return ((ISingleResult<SearchSingleKeywordResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.Group_Member")]
@@ -2882,6 +2889,67 @@ namespace SpeedyChefApi
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class SearchSingleKeywordResult
+	{
+        private string _Recid;
+
+		private string _Recname;
+		
+		private string _Recdesc;
+		
+		public SearchSingleKeywordResult()
+		{
+		}
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Recid", DbType = "int")]
+        public string Recid
+        {
+            get
+            {
+                return this._Recid;
+            }
+            set
+            {
+                if ((this._Recid != value))
+                {
+                    this._Recid = value;
+                }
+            }
+        }
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
+		public string Recdesc
+		{
+			get
+			{
+				return this._Recdesc;
+			}
+			set
+			{
+				if ((this._Recdesc != value))
+				{
+					this._Recdesc = value;
+				}
 			}
 		}
 	}

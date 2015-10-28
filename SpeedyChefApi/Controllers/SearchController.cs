@@ -37,9 +37,8 @@ namespace SpeedyChefApi.Controllers
         // SEARCH: /Search/
         public ActionResult Search()
         {
-            SpeedyChefDataContext context = new SpeedyChefDataContext();
-            Member temp = context.Members.First();
-            return Json(temp, JsonRequestBehavior.AllowGet);
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            return Json(scdc.SearchSingleKeyword("Trotta"), JsonRequestBehavior.AllowGet);
         }
     }
 }
