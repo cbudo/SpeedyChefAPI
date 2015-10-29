@@ -45,9 +45,6 @@ namespace SpeedyChefApi
     partial void InsertTool(Tool instance);
     partial void UpdateTool(Tool instance);
     partial void DeleteTool(Tool instance);
-    partial void InsertAgenda(Agenda instance);
-    partial void UpdateAgenda(Agenda instance);
-    partial void DeleteAgenda(Agenda instance);
     partial void InsertFood_Item(Food_Item instance);
     partial void UpdateFood_Item(Food_Item instance);
     partial void DeleteFood_Item(Food_Item instance);
@@ -78,6 +75,9 @@ namespace SpeedyChefApi
     partial void InsertAgenda_Meal(Agenda_Meal instance);
     partial void UpdateAgenda_Meal(Agenda_Meal instance);
     partial void DeleteAgenda_Meal(Agenda_Meal instance);
+    partial void InsertAgenda(Agenda instance);
+    partial void UpdateAgenda(Agenda instance);
+    partial void DeleteAgenda(Agenda instance);
     #endregion
 		
 		public SpeedyChefDataContext() : 
@@ -147,14 +147,6 @@ namespace SpeedyChefApi
 			get
 			{
 				return this.GetTable<Tool>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Agenda> Agendas
-		{
-			get
-			{
-				return this.GetTable<Agenda>();
 			}
 		}
 		
@@ -235,6 +227,14 @@ namespace SpeedyChefApi
 			get
 			{
 				return this.GetTable<Agenda_Meal>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Agenda> Agendas
+		{
+			get
+			{
+				return this.GetTable<Agenda>();
 			}
 		}
 		
@@ -1110,209 +1110,6 @@ namespace SpeedyChefApi
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Agenda")]
-	public partial class Agenda : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Agowner;
-		
-		private string _Agname;
-		
-		private System.Nullable<System.DateTime> _Agstartdate;
-		
-		private System.Nullable<System.DateTime> _Agenddate;
-		
-		private EntitySet<Agenda_Meal> _Agenda_Meals;
-		
-		private EntityRef<Member> _Member;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAgownerChanging(string value);
-    partial void OnAgownerChanged();
-    partial void OnAgnameChanging(string value);
-    partial void OnAgnameChanged();
-    partial void OnAgstartdateChanging(System.Nullable<System.DateTime> value);
-    partial void OnAgstartdateChanged();
-    partial void OnAgenddateChanging(System.Nullable<System.DateTime> value);
-    partial void OnAgenddateChanged();
-    #endregion
-		
-		public Agenda()
-		{
-			this._Agenda_Meals = new EntitySet<Agenda_Meal>(new Action<Agenda_Meal>(this.attach_Agenda_Meals), new Action<Agenda_Meal>(this.detach_Agenda_Meals));
-			this._Member = default(EntityRef<Member>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agowner", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Agowner
-		{
-			get
-			{
-				return this._Agowner;
-			}
-			set
-			{
-				if ((this._Agowner != value))
-				{
-					if (this._Member.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAgownerChanging(value);
-					this.SendPropertyChanging();
-					this._Agowner = value;
-					this.SendPropertyChanged("Agowner");
-					this.OnAgownerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agname", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Agname
-		{
-			get
-			{
-				return this._Agname;
-			}
-			set
-			{
-				if ((this._Agname != value))
-				{
-					this.OnAgnameChanging(value);
-					this.SendPropertyChanging();
-					this._Agname = value;
-					this.SendPropertyChanged("Agname");
-					this.OnAgnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agstartdate", DbType="Date")]
-		public System.Nullable<System.DateTime> Agstartdate
-		{
-			get
-			{
-				return this._Agstartdate;
-			}
-			set
-			{
-				if ((this._Agstartdate != value))
-				{
-					this.OnAgstartdateChanging(value);
-					this.SendPropertyChanging();
-					this._Agstartdate = value;
-					this.SendPropertyChanged("Agstartdate");
-					this.OnAgstartdateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agenddate", DbType="Date")]
-		public System.Nullable<System.DateTime> Agenddate
-		{
-			get
-			{
-				return this._Agenddate;
-			}
-			set
-			{
-				if ((this._Agenddate != value))
-				{
-					this.OnAgenddateChanging(value);
-					this.SendPropertyChanging();
-					this._Agenddate = value;
-					this.SendPropertyChanged("Agenddate");
-					this.OnAgenddateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Agenda_Agenda_Meal", Storage="_Agenda_Meals", ThisKey="Agowner", OtherKey="Agowner")]
-		public EntitySet<Agenda_Meal> Agenda_Meals
-		{
-			get
-			{
-				return this._Agenda_Meals;
-			}
-			set
-			{
-				this._Agenda_Meals.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Agenda", Storage="_Member", ThisKey="Agowner", OtherKey="Memname", IsForeignKey=true)]
-		public Member Member
-		{
-			get
-			{
-				return this._Member.Entity;
-			}
-			set
-			{
-				Member previousValue = this._Member.Entity;
-				if (((previousValue != value) 
-							|| (this._Member.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Member.Entity = null;
-						previousValue.Agendas.Remove(this);
-					}
-					this._Member.Entity = value;
-					if ((value != null))
-					{
-						value.Agendas.Add(this);
-						this._Agowner = value.Memname;
-					}
-					else
-					{
-						this._Agowner = default(string);
-					}
-					this.SendPropertyChanged("Member");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Agenda_Meals(Agenda_Meal entity)
-		{
-			this.SendPropertyChanging();
-			entity.Agenda = this;
-		}
-		
-		private void detach_Agenda_Meals(Agenda_Meal entity)
-		{
-			this.SendPropertyChanging();
-			entity.Agenda = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Food_Item")]
 	public partial class Food_Item : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1473,9 +1270,9 @@ namespace SpeedyChefApi
 		
 		private EntitySet<Member_Group> _Member_Groups;
 		
-		private EntitySet<Agenda> _Agendas;
-		
 		private EntitySet<Member_Allergen> _Member_Allergens;
+		
+		private EntityRef<Agenda> _Agenda;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1491,8 +1288,8 @@ namespace SpeedyChefApi
 		{
 			this._Group_Members = new EntitySet<Group_Member>(new Action<Group_Member>(this.attach_Group_Members), new Action<Group_Member>(this.detach_Group_Members));
 			this._Member_Groups = new EntitySet<Member_Group>(new Action<Member_Group>(this.attach_Member_Groups), new Action<Member_Group>(this.detach_Member_Groups));
-			this._Agendas = new EntitySet<Agenda>(new Action<Agenda>(this.attach_Agendas), new Action<Agenda>(this.detach_Agendas));
 			this._Member_Allergens = new EntitySet<Member_Allergen>(new Action<Member_Allergen>(this.attach_Member_Allergens), new Action<Member_Allergen>(this.detach_Member_Allergens));
+			this._Agenda = default(EntityRef<Agenda>);
 			OnCreated();
 		}
 		
@@ -1562,19 +1359,6 @@ namespace SpeedyChefApi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Agenda", Storage="_Agendas", ThisKey="Memname", OtherKey="Agowner")]
-		public EntitySet<Agenda> Agendas
-		{
-			get
-			{
-				return this._Agendas;
-			}
-			set
-			{
-				this._Agendas.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Member_Allergen", Storage="_Member_Allergens", ThisKey="Memname", OtherKey="Memname")]
 		public EntitySet<Member_Allergen> Member_Allergens
 		{
@@ -1585,6 +1369,35 @@ namespace SpeedyChefApi
 			set
 			{
 				this._Member_Allergens.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Agenda", Storage="_Agenda", ThisKey="Memname", OtherKey="Agowner", IsUnique=true, IsForeignKey=false)]
+		public Agenda Agenda
+		{
+			get
+			{
+				return this._Agenda.Entity;
+			}
+			set
+			{
+				Agenda previousValue = this._Agenda.Entity;
+				if (((previousValue != value) 
+							|| (this._Agenda.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Agenda.Entity = null;
+						previousValue.Member = null;
+					}
+					this._Agenda.Entity = value;
+					if ((value != null))
+					{
+						value.Member = this;
+					}
+					this.SendPropertyChanged("Agenda");
+				}
 			}
 		}
 		
@@ -1627,18 +1440,6 @@ namespace SpeedyChefApi
 		}
 		
 		private void detach_Member_Groups(Member_Group entity)
-		{
-			this.SendPropertyChanging();
-			entity.Member = null;
-		}
-		
-		private void attach_Agendas(Agenda entity)
-		{
-			this.SendPropertyChanging();
-			entity.Member = this;
-		}
-		
-		private void detach_Agendas(Agenda entity)
 		{
 			this.SendPropertyChanging();
 			entity.Member = null;
@@ -3043,9 +2844,9 @@ namespace SpeedyChefApi
 		
 		private string _Agowner;
 		
-		private EntityRef<Agenda> _Agenda;
-		
 		private EntityRef<Meal> _Meal;
+		
+		private EntityRef<Agenda> _Agenda;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3059,8 +2860,8 @@ namespace SpeedyChefApi
 		
 		public Agenda_Meal()
 		{
-			this._Agenda = default(EntityRef<Agenda>);
 			this._Meal = default(EntityRef<Meal>);
+			this._Agenda = default(EntityRef<Agenda>);
 			OnCreated();
 		}
 		
@@ -3112,40 +2913,6 @@ namespace SpeedyChefApi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Agenda_Agenda_Meal", Storage="_Agenda", ThisKey="Agowner", OtherKey="Agowner", IsForeignKey=true)]
-		public Agenda Agenda
-		{
-			get
-			{
-				return this._Agenda.Entity;
-			}
-			set
-			{
-				Agenda previousValue = this._Agenda.Entity;
-				if (((previousValue != value) 
-							|| (this._Agenda.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Agenda.Entity = null;
-						previousValue.Agenda_Meals.Remove(this);
-					}
-					this._Agenda.Entity = value;
-					if ((value != null))
-					{
-						value.Agenda_Meals.Add(this);
-						this._Agowner = value.Agowner;
-					}
-					else
-					{
-						this._Agowner = default(string);
-					}
-					this.SendPropertyChanged("Agenda");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Meal_Agenda_Meal", Storage="_Meal", ThisKey="Mealid", OtherKey="Mealid", IsForeignKey=true)]
 		public Meal Meal
 		{
@@ -3180,6 +2947,40 @@ namespace SpeedyChefApi
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Agenda_Agenda_Meal", Storage="_Agenda", ThisKey="Agowner", OtherKey="Agowner", IsForeignKey=true)]
+		public Agenda Agenda
+		{
+			get
+			{
+				return this._Agenda.Entity;
+			}
+			set
+			{
+				Agenda previousValue = this._Agenda.Entity;
+				if (((previousValue != value) 
+							|| (this._Agenda.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Agenda.Entity = null;
+						previousValue.Agenda_Meals.Remove(this);
+					}
+					this._Agenda.Entity = value;
+					if ((value != null))
+					{
+						value.Agenda_Meals.Add(this);
+						this._Agowner = value.Agowner;
+					}
+					else
+					{
+						this._Agowner = default(string);
+					}
+					this.SendPropertyChanged("Agenda");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3201,10 +3002,190 @@ namespace SpeedyChefApi
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Agenda")]
+	public partial class Agenda : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Agowner;
+		
+		private System.Nullable<System.DateTime> _Agstartdate;
+		
+		private System.Nullable<System.DateTime> _Agenddate;
+		
+		private EntitySet<Agenda_Meal> _Agenda_Meals;
+		
+		private EntityRef<Member> _Member;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAgownerChanging(string value);
+    partial void OnAgownerChanged();
+    partial void OnAgstartdateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAgstartdateChanged();
+    partial void OnAgenddateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAgenddateChanged();
+    #endregion
+		
+		public Agenda()
+		{
+			this._Agenda_Meals = new EntitySet<Agenda_Meal>(new Action<Agenda_Meal>(this.attach_Agenda_Meals), new Action<Agenda_Meal>(this.detach_Agenda_Meals));
+			this._Member = default(EntityRef<Member>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agowner", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Agowner
+		{
+			get
+			{
+				return this._Agowner;
+			}
+			set
+			{
+				if ((this._Agowner != value))
+				{
+					if (this._Member.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAgownerChanging(value);
+					this.SendPropertyChanging();
+					this._Agowner = value;
+					this.SendPropertyChanged("Agowner");
+					this.OnAgownerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agstartdate", DbType="Date")]
+		public System.Nullable<System.DateTime> Agstartdate
+		{
+			get
+			{
+				return this._Agstartdate;
+			}
+			set
+			{
+				if ((this._Agstartdate != value))
+				{
+					this.OnAgstartdateChanging(value);
+					this.SendPropertyChanging();
+					this._Agstartdate = value;
+					this.SendPropertyChanged("Agstartdate");
+					this.OnAgstartdateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agenddate", DbType="Date")]
+		public System.Nullable<System.DateTime> Agenddate
+		{
+			get
+			{
+				return this._Agenddate;
+			}
+			set
+			{
+				if ((this._Agenddate != value))
+				{
+					this.OnAgenddateChanging(value);
+					this.SendPropertyChanging();
+					this._Agenddate = value;
+					this.SendPropertyChanged("Agenddate");
+					this.OnAgenddateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Agenda_Agenda_Meal", Storage="_Agenda_Meals", ThisKey="Agowner", OtherKey="Agowner")]
+		public EntitySet<Agenda_Meal> Agenda_Meals
+		{
+			get
+			{
+				return this._Agenda_Meals;
+			}
+			set
+			{
+				this._Agenda_Meals.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Member_Agenda", Storage="_Member", ThisKey="Agowner", OtherKey="Memname", IsForeignKey=true)]
+		public Member Member
+		{
+			get
+			{
+				return this._Member.Entity;
+			}
+			set
+			{
+				Member previousValue = this._Member.Entity;
+				if (((previousValue != value) 
+							|| (this._Member.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Member.Entity = null;
+						previousValue.Agenda = null;
+					}
+					this._Member.Entity = value;
+					if ((value != null))
+					{
+						value.Agenda = this;
+						this._Agowner = value.Memname;
+					}
+					else
+					{
+						this._Agowner = default(string);
+					}
+					this.SendPropertyChanged("Member");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Agenda_Meals(Agenda_Meal entity)
+		{
+			this.SendPropertyChanging();
+			entity.Agenda = this;
+		}
+		
+		private void detach_Agenda_Meals(Agenda_Meal entity)
+		{
+			this.SendPropertyChanging();
+			entity.Agenda = null;
+		}
+	}
+	
 	public partial class SearchSingleKeywordResult
 	{
-        private string _Recid;
-
+		
+		private int _Recid;
+		
 		private string _Recname;
 		
 		private string _Recdesc;
@@ -3212,22 +3193,22 @@ namespace SpeedyChefApi
 		public SearchSingleKeywordResult()
 		{
 		}
-
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Recid", DbType = "int")]
-        public string Recid
-        {
-            get
-            {
-                return this._Recid;
-            }
-            set
-            {
-                if ((this._Recid != value))
-                {
-                    this._Recid = value;
-                }
-            }
-        }
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recid", DbType="Int NOT NULL")]
+		public int Recid
+		{
+			get
+			{
+				return this._Recid;
+			}
+			set
+			{
+				if ((this._Recid != value))
+				{
+					this._Recid = value;
+				}
+			}
+		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
 		public string Recname
