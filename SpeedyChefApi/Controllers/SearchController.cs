@@ -71,7 +71,6 @@ namespace SpeedyChefApi.Controllers
                 {
                     IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
                     tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
-                    System.Console.Write(tempRes);
                 }
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);
