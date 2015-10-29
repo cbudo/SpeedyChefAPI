@@ -245,11 +245,26 @@ namespace SpeedyChefApi
 			return ((ISingleResult<SearchSingleKeywordResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.AddRecipeToMeal")]
+		public int AddRecipeToMeal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> mealId, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string recipeName)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealId, recipeName);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.GetMealForDay")]
 		public ISingleResult<GetMealForDayResult> GetMealForDay([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date);
 			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.MealNameExists")]
+		public int MealNameExists([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> size, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] ref System.Nullable<int> returnValue)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date, name, size, returnValue);
+			returnValue = ((System.Nullable<int>)(result.GetParameterValue(4)));
+			return ((int)(result.ReturnValue));
 		}
 	}
 	

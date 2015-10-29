@@ -152,6 +152,11 @@
       <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="db_owner.AddRecipeToMeal" Method="AddRecipeToMeal">
+    <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="recipeName" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="db_owner.GetMealForDay" Method="GetMealForDay">
     <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
     <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
@@ -161,5 +166,13 @@
       <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="db_owner.MealNameExists" Method="MealNameExists">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="size" Type="System.Int32" DbType="Int" />
+    <Parameter Name="returnValue" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

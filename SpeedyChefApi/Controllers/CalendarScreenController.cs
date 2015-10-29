@@ -44,7 +44,9 @@ namespace SpeedyChefApi.Controllers
         * @param user - current user to get meals for 
         * @param date - String format of YYYY-MM-DD
         *               for day
-        **/ 
+        * 
+        * @test - /CalendarScreen/GetMealDay?user=tester&date=2015-10-30
+        **/
         public ActionResult GetMealDay(string user, string date)
         {
             if (user == null || date == null)
