@@ -44,15 +44,18 @@ namespace SpeedyChefApi.Controllers
             return View();
         }
 
-        public JsonResult getUserCalendar(string user, DateTime date)
+
+        public JsonResult getUserCalendar(/** string user, DateTime date **/)
         {
             JsonResult json = new JsonResult();
             //Models.CalendarScreen calScreen = new Models.CalScreen();
-            Models.Member member = new Models.Member();
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
             
-            // Don't exactly know what I am doing yet, but might as well get started.
+            
+            
 
+            // Don't exactly know what I am doing yet, but might as well get started.
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return json;
         }
     }

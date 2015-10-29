@@ -49,19 +49,8 @@
       <Column Name="Agname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Agstartdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Agenddate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Association Name="Agenda_Agenda_Recipe" Member="Agenda_Recipes" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda_Recipe" />
+      <Association Name="Agenda_Agenda_Meal" Member="Agenda_Meals" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda_Meal" />
       <Association Name="Member_Agenda" Member="Member" ThisKey="Agowner" OtherKey="Memname" Type="Member" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Agenda_Recipes" Member="Agenda_Recipes">
-    <Type Name="Agenda_Recipe">
-      <Column Name="Agowner" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Recstart" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Recend" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Partysize" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Agenda_Agenda_Recipe" Member="Agenda" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda" IsForeignKey="true" />
-      <Association Name="Recipe_Agenda_Recipe" Member="Recipe" ThisKey="Recid" OtherKey="Recid" Type="Recipe" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Food_Item" Member="Food_Items">
@@ -97,9 +86,9 @@
       <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="Recipe_Agenda_Recipe" Member="Agenda_Recipes" ThisKey="Recid" OtherKey="Recid" Type="Agenda_Recipe" />
       <Association Name="Recipe_Recipe_Task" Member="Recipe_Tasks" ThisKey="Recid" OtherKey="Recid" Type="Recipe_Task" />
       <Association Name="Recipe_Task" Member="Tasks" ThisKey="Recid" OtherKey="Taskrec" Type="Task" />
+      <Association Name="Recipe_Meal_Recipe" Member="Meal_Recipes" ThisKey="Recid" OtherKey="Recid" Type="Meal_Recipe" />
     </Type>
   </Table>
   <Table Name="dbo.Recipe_Tasks" Member="Recipe_Tasks">
@@ -128,6 +117,32 @@
       <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="Food_Item_Task_Food_Item" Member="Food_Item" ThisKey="Foodname" OtherKey="Foodname" Type="Food_Item" IsForeignKey="true" />
       <Association Name="Task_Task_Food_Item" Member="Task" ThisKey="Taskid" OtherKey="Taskid" Type="Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="db_owner.Meal" Member="Meals">
+    <Type Name="Meal">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mealday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Meal_Meal_Recipe" Member="Meal_Recipes" ThisKey="Mealid" OtherKey="Mealid" Type="Meal_Recipe" />
+      <Association Name="Meal_Agenda_Meal" Member="Agenda_Meals" ThisKey="Mealid" OtherKey="Mealid" Type="Agenda_Meal" />
+    </Type>
+  </Table>
+  <Table Name="db_owner.Meal_Recipes" Member="Meal_Recipes">
+    <Type Name="Meal_Recipe">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Meal_Meal_Recipe" Member="Meal" ThisKey="Mealid" OtherKey="Mealid" Type="Meal" IsForeignKey="true" />
+      <Association Name="Recipe_Meal_Recipe" Member="Recipe" ThisKey="Recid" OtherKey="Recid" Type="Recipe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="db_owner.Agenda_Meals" Member="Agenda_Meals">
+    <Type Name="Agenda_Meal">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Agowner" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Agenda_Agenda_Meal" Member="Agenda" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda" IsForeignKey="true" />
+      <Association Name="Meal_Agenda_Meal" Member="Meal" ThisKey="Mealid" OtherKey="Mealid" Type="Meal" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="db_owner.SearchSingleKeyword" Method="SearchSingleKeyword">
