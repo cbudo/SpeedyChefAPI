@@ -14,6 +14,17 @@ namespace SpeedyChefApi.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Allergies(string tags)
+        {
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Appliances(string ovens, string burners)
+        {
+            return RedirectToAction("Index");
+        }
+
         public JsonResult getUserProperties(string user)
         {
             JsonResult json = new JsonResult();
