@@ -244,6 +244,13 @@ namespace SpeedyChefApi
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), keyword);
 			return ((ISingleResult<SearchSingleKeywordResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.GetMealForDay")]
+		public ISingleResult<GetMealForDayResult> GetMealForDay([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date);
+			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.Group_Member")]
@@ -3206,6 +3213,86 @@ namespace SpeedyChefApi
 				if ((this._Recid != value))
 				{
 					this._Recid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
+		public string Recdesc
+		{
+			get
+			{
+				return this._Recdesc;
+			}
+			set
+			{
+				if ((this._Recdesc != value))
+				{
+					this._Recdesc = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetMealForDayResult
+	{
+		
+		private string _Mealname;
+		
+		private System.Nullable<int> _Mealsize;
+		
+		private string _Recname;
+		
+		private string _Recdesc;
+		
+		public GetMealForDayResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealname", DbType="VarChar(50)")]
+		public string Mealname
+		{
+			get
+			{
+				return this._Mealname;
+			}
+			set
+			{
+				if ((this._Mealname != value))
+				{
+					this._Mealname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mealsize", DbType="Int")]
+		public System.Nullable<int> Mealsize
+		{
+			get
+			{
+				return this._Mealsize;
+			}
+			set
+			{
+				if ((this._Mealsize != value))
+				{
+					this._Mealsize = value;
 				}
 			}
 		}
