@@ -3203,7 +3203,8 @@ namespace SpeedyChefApi
 	
 	public partial class SearchSingleKeywordResult
 	{
-		
+        private string _Recid;
+
 		private string _Recname;
 		
 		private string _Recdesc;
@@ -3211,6 +3212,22 @@ namespace SpeedyChefApi
 		public SearchSingleKeywordResult()
 		{
 		}
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Recid", DbType = "int")]
+        public string Recid
+        {
+            get
+            {
+                return this._Recid;
+            }
+            set
+            {
+                if ((this._Recid != value))
+                {
+                    this._Recid = value;
+                }
+            }
+        }
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
 		public string Recname

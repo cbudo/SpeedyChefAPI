@@ -51,12 +51,16 @@ namespace SpeedyChefApi.Controllers
 
         public ActionResult Search(string inputKeywords)
         {
+            if (inputKeywords == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
             string[] keywordList = inputKeywords.Split(',');
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
             IEnumerable<SearchSingleKeywordResult> tempRes = null;
             if (keywordList == null)
             {
-                return Json("", JsonRequestBehavior.AllowGet);
+                return Json(null, JsonRequestBehavior.AllowGet);
             }
             foreach (string keyword in keywordList)
             {
@@ -68,7 +72,6 @@ namespace SpeedyChefApi.Controllers
                 {
                     IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
                     tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
-
                 }
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);
