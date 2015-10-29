@@ -52,7 +52,6 @@ namespace SpeedyChefApi.Controllers
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
             
             
-            
 
             // Don't exactly know what I am doing yet, but might as well get started.
             json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
