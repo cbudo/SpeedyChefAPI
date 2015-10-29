@@ -137,7 +137,7 @@
         <classShapeMoniker Id="2d53be01-3c9b-4e6e-a37b-55931a7359b1" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 15.31217651878); (8.60416666666667 : 15.31217651878 : JumpStart); (8.77083333333333 : 15.31217651878 : JumpEnd); (10 : 15.31217651878); (10 : 15.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 15.31217651878); (10 : 15.31217651878); (10 : 15.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/Recipe/Recipe_Recipe_Task" />
       <nodes>
         <classShapeMoniker Id="1b3054dd-ecc8-49e8-af96-dc2ee0487579" />
@@ -191,7 +191,7 @@
         <classShapeMoniker Id="5959fc3a-e673-48f3-bd44-db184091d5b8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.9995127781701); (8.60416666666667 : 14.9995127781701 : JumpStart); (8.77083333333333 : 14.9995127781701 : JumpEnd); (12.65625 : 14.9995127781701); (12.65625 : 5.69399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 14.9995127781701); (12.65625 : 14.9995127781701); (12.65625 : 5.69399251302083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/Recipe/Recipe_Meal_Recipe" />
       <nodes>
         <classShapeMoniker Id="1b3054dd-ecc8-49e8-af96-dc2ee0487579" />
@@ -204,7 +204,7 @@
         <elementListCompartment Id="dc0a9884-6586-45c1-a780-b9e0a1e0863d" absoluteBounds="1.5150000000000001, 7.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(10 : 7.28125); (3.5 : 7.28125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10 : 7.28125); (9.83333333333333 : 7.28125 : JumpStart); (9.66666666666667 : 7.28125 : JumpEnd); (4.58333333333333 : 7.28125 : JumpStart); (4.41666666666667 : 7.28125 : JumpEnd); (3.5 : 7.28125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/Meal/Meal_Agenda_Meal" />
       <nodes>
         <classShapeMoniker Id="6e764367-b87a-4cf6-a3f3-5e6fcfab8204" />

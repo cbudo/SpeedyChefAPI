@@ -114,6 +114,8 @@ namespace SpeedyChefApi.Controllers
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
             int? returnValue = -1;
             int result = scdc.MealNameExists(user, date, mealName, size, ref returnValue);
+            // Removes all values for the associated mealId
+            int removeResult = scdc.RemoveRecipesFromMealId(returnValue.Value);
             System.Diagnostics.Debug.WriteLine(recipeNames);
             if (recipeNames != null)
             {
