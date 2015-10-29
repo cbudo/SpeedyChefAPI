@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using SpeedyChefApi;
 using System.Data.SqlClient;
+using System.Data.Linq;
 
 
 namespace SpeedyChefApi.Controllers
@@ -48,11 +49,29 @@ namespace SpeedyChefApi.Controllers
             }
         }
 
-        // SEARCH: /Search/
-        public ActionResult Search()
+        public ActionResult Search(string inputKeywords)
         {
+            string[] keywordList = inputKeywords.Split(',');
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
-            return Json(scdc.SearchSingleKeyword("Trotta").Union(scdc.SearchSingleKeyword("BUDO"), new SearchSingleComparer()), JsonRequestBehavior.AllowGet);
+            IEnumerable<SearchSingleKeywordResult> tempRes = null;
+            if (keywordList == null)
+            {
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
+            foreach (string keyword in keywordList)
+            {
+                if (tempRes != null)
+                {
+                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+                }
+                else 
+                {
+                    IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
+                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+
+                }
+            }
+            return Json(tempRes, JsonRequestBehavior.AllowGet);
         }
     }
 }
