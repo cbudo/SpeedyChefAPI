@@ -179,4 +179,10 @@
     <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="db_owner.RemoveMeal" Method="RemoveMeal">
+    <Parameter Name="mealName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

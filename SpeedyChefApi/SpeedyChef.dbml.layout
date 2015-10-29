@@ -204,7 +204,7 @@
         <elementListCompartment Id="dc0a9884-6586-45c1-a780-b9e0a1e0863d" absoluteBounds="1.5150000000000001, 7.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(10 : 7.28125); (9.83333333333333 : 7.28125 : JumpStart); (9.66666666666667 : 7.28125 : JumpEnd); (4.58333333333333 : 7.28125 : JumpStart); (4.41666666666667 : 7.28125 : JumpEnd); (3.5 : 7.28125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(10 : 7.28125); (3.5 : 7.28125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/Meal/Meal_Agenda_Meal" />
       <nodes>
         <classShapeMoniker Id="6e764367-b87a-4cf6-a3f3-5e6fcfab8204" />

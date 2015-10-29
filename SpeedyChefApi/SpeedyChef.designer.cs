@@ -273,6 +273,13 @@ namespace SpeedyChefApi
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealId);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.RemoveMeal")]
+		public int RemoveMeal([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string mealName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealName, date, user);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.Group_Member")]
