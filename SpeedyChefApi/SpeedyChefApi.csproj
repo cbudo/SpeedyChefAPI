@@ -127,11 +127,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CalendarScreenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StepsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Models\CalendarScreen.cs" />
     <Compile Include="Models\Preferences.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />

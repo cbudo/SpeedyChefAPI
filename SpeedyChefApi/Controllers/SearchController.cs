@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web;
 using System.Web.Mvc;
 using SpeedyChefApi;
+using System.Data.SqlClient;
 
 
 namespace SpeedyChefApi.Controllers
@@ -34,12 +35,45 @@ namespace SpeedyChefApi.Controllers
         {
         }
 
-        // SEARCH: /Search/
-        public ActionResult Search()
+        public class SearchSingleComparer : IEqualityComparer<SearchSingleKeywordResult>
         {
-            SpeedyChefDataContext context = new SpeedyChefDataContext();
-            Member temp = context.Members.First();
-            return Json(temp, JsonRequestBehavior.AllowGet);
+            public bool Equals(SearchSingleKeywordResult x, SearchSingleKeywordResult y)
+            {
+                return x.Recid == y.Recid;
+            }
+
+            public int GetHashCode(SearchSingleKeywordResult obj)
+            {
+                return obj.Recid.GetHashCode();
+            }
+        }
+
+        public ActionResult Search(string inputKeywords)
+        {
+            if (inputKeywords == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+            string[] keywordList = inputKeywords.Split(',');
+            SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            IEnumerable<SearchSingleKeywordResult> tempRes = null;
+            if (keywordList == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+            foreach (string keyword in keywordList)
+            {
+                if (tempRes != null)
+                {
+                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+                }
+                else 
+                {
+                    IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
+                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+                }
+            }
+            return Json(tempRes, JsonRequestBehavior.AllowGet);
         }
     }
 }
