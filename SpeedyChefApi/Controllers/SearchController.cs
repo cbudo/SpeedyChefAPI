@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using SpeedyChefApi;
 using System.Data.SqlClient;
-using System.Data.Linq;
 
 
 namespace SpeedyChefApi.Controllers
@@ -72,6 +71,7 @@ namespace SpeedyChefApi.Controllers
                 {
                     IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
                     tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+                    System.Console.Write(tempRes);
                 }
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);
