@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 using SpeedyChefApi;
+using System.Globalization;
 
 namespace SpeedyChefApi.Controllers
 {
@@ -32,30 +33,30 @@ namespace SpeedyChefApi.Controllers
         {
         }
 
-        public ActionResult Calendar()
-        {
-            SpeedyChefDataContext context = new SpeedyChefDataContext();
-            Member temp = context.Members.First();
-            return Json(temp, JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult Index()
         {
             return View();
         }
 
-
-        public JsonResult getUserCalendar(/** string user, DateTime date **/)
+        /**
+        * Used to call the stored procedure GetMealForDay
+        * @param user - current user to get meals for 
+        * @param date - String format of YYYY-MM-DD
+        *               for day
+        **/ 
+        public ActionResult GetMealDay(string user, string date)
         {
-            JsonResult json = new JsonResult();
-            //Models.CalendarScreen calScreen = new Models.CalScreen();
+            if (user == null || date == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
+            IEnumerable<GetMealForDayResult> gmfdr = null;
+            //System.Diagnostics.Debug.WriteLine(date);
             
-            
-
-            // Don't exactly know what I am doing yet, but might as well get started.
-            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
-            return json;
+            gmfdr = scdc.GetMealForDay(user, date);
+            return Json(gmfdr, JsonRequestBehavior.AllowGet);
         }
     }
 }

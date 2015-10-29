@@ -154,7 +154,7 @@
   </Function>
   <Function Name="db_owner.GetMealForDay" Method="GetMealForDay">
     <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
-    <Parameter Name="date" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="GetMealForDayResult">
       <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />

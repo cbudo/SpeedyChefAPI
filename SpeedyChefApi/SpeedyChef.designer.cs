@@ -246,7 +246,7 @@ namespace SpeedyChefApi
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="db_owner.GetMealForDay")]
-		public ISingleResult<GetMealForDayResult> GetMealForDay([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> date)
+		public ISingleResult<GetMealForDayResult> GetMealForDay([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string user, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string date)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), user, date);
 			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
