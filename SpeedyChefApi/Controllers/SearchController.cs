@@ -56,7 +56,7 @@ namespace SpeedyChefApi.Controllers
             }
             string[] keywordList = inputKeywords.Split(',');
             SpeedyChefDataContext scdc = new SpeedyChefDataContext();
-            IEnumerable<SearchSingleKeywordResult> tempRes = null;
+            List<SearchSingleKeywordResult> tempRes = null;
             if (keywordList == null)
             {
                 return Json(null, JsonRequestBehavior.AllowGet);
@@ -65,12 +65,12 @@ namespace SpeedyChefApi.Controllers
             {
                 if (tempRes != null)
                 {
-                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer()).ToList();
                 }
                 else 
                 {
-                    IEnumerable<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
-                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer());
+                    List<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
+                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer()).ToList();
                 }
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);
