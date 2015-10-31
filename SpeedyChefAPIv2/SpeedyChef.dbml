@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SpeedyChef" Class="SpeedyChefDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=classes.database.windows.net;Initial Catalog=SpeedyChef;User ID=budocf" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="SpeedyChefConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Agenda" Member="Agendas">
+    <Type Name="Agenda">
+      <Column Name="Agowner" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Agstartdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Agenddate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Agenda_Agenda_Meal" Member="Agenda_Meals" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda_Meal" />
+      <Association Name="Agenda_Agenda_Meal1" Member="Agenda_Meals1" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda_Meal" />
+      <Association Name="Member_Agenda" Member="Member" ThisKey="Agowner" OtherKey="Memname" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tool" Member="Tools">
+    <Type Name="Tool">
+      <Column Name="Toolid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Toolname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tooldesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Tool_Group_Tool" Member="Group_Tools" ThisKey="Toolid" OtherKey="Toolid" Type="Group_Tool" />
+      <Association Name="Tool_Stove" Member="Stove" ThisKey="Toolid" OtherKey="Toolid" Type="Stove" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Agenda_Meals" Member="Agenda_Meals">
+    <Type Name="Agenda_Meal">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Agowner" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Agenda_Agenda_Meal" Member="Agenda" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda" IsForeignKey="true" />
+      <Association Name="Agenda_Agenda_Meal1" Member="Agenda1" ThisKey="Agowner" OtherKey="Agowner" Type="Agenda" IsForeignKey="true" />
+      <Association Name="Meal_Agenda_Meal" Member="Meal" ThisKey="Mealid" OtherKey="Mealid" Type="Meal" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Food_Item" Member="Food_Items">
+    <Type Name="Food_Item">
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Food_Item_Member_Allergen" Member="Member_Allergens" ThisKey="Foodname" OtherKey="Foodname" Type="Member_Allergen" />
+      <Association Name="Food_Item_Member_Allergen1" Member="Member_Allergens1" ThisKey="Foodname" OtherKey="Substitution" Type="Member_Allergen" />
+      <Association Name="Food_Item_Task_Food_Item" Member="Task_Food_Items" ThisKey="Foodname" OtherKey="Foodname" Type="Task_Food_Item" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Group_Member" Member="Group_Members">
+    <Type Name="Group_Member">
+      <Column Name="Memname" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Groupid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Group_Tool" Member="Group_Tools">
+    <Type Name="Group_Tool">
+      <Column Name="Toolid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Groupid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Tool_Group_Tool" Member="Tool" ThisKey="Toolid" OtherKey="Toolid" Type="Tool" IsForeignKey="true" />
+      <Association Name="Member_Group_Group_Tool" Member="Member_Group" ThisKey="Groupid" OtherKey="Groupid" Type="Member_Group" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Meal" Member="Meals">
+    <Type Name="Meal">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mealday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Meal_Agenda_Meal" Member="Agenda_Meals" ThisKey="Mealid" OtherKey="Mealid" Type="Agenda_Meal" />
+      <Association Name="Meal_Meal_Recipe" Member="Meal_Recipes" ThisKey="Mealid" OtherKey="Mealid" Type="Meal_Recipe" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Meal_Recipes" Member="Meal_Recipes">
+    <Type Name="Meal_Recipe">
+      <Column Name="Mealid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Meal_Meal_Recipe" Member="Meal" ThisKey="Mealid" OtherKey="Mealid" Type="Meal" IsForeignKey="true" />
+      <Association Name="Recipe_Meal_Recipe" Member="Recipe" ThisKey="Recid" OtherKey="Recid" Type="Recipe" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Member" Member="Members">
+    <Type Name="Member">
+      <Column Name="Memname" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Mempass" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Association Name="Member_Agenda" Member="Agenda" ThisKey="Memname" OtherKey="Agowner" Type="Agenda" Cardinality="One" />
+      <Association Name="Member_Member_Allergen" Member="Member_Allergens" ThisKey="Memname" OtherKey="Memname" Type="Member_Allergen" />
+      <Association Name="Member_Member_Group" Member="Member_Groups" ThisKey="Memname" OtherKey="Groupadmin" Type="Member_Group" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Member_Allergens" Member="Member_Allergens">
+    <Type Name="Member_Allergen">
+      <Column Name="Memname" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Substitution" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Food_Item_Member_Allergen" Member="Food_Item" ThisKey="Foodname" OtherKey="Foodname" Type="Food_Item" IsForeignKey="true" />
+      <Association Name="Member_Member_Allergen" Member="Member" ThisKey="Memname" OtherKey="Memname" Type="Member" IsForeignKey="true" />
+      <Association Name="Food_Item_Member_Allergen1" Member="Food_Item1" ThisKey="Substitution" OtherKey="Foodname" Type="Food_Item" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Member_Group" Member="Member_Groups">
+    <Type Name="Member_Group">
+      <Column Name="Groupid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Groupadmin" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Groupname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Member_Group_Group_Tool" Member="Group_Tools" ThisKey="Groupid" OtherKey="Groupid" Type="Group_Tool" />
+      <Association Name="Member_Member_Group" Member="Member" ThisKey="Groupadmin" OtherKey="Memname" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recipe" Member="Recipes">
+    <Type Name="Recipe">
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdiff" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rectime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Recipe_Meal_Recipe" Member="Meal_Recipes" ThisKey="Recid" OtherKey="Recid" Type="Meal_Recipe" />
+      <Association Name="Recipe_Recipe_Task" Member="Recipe_Tasks" ThisKey="Recid" OtherKey="Recid" Type="Recipe_Task" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recipe_Tasks" Member="Recipe_Tasks">
+    <Type Name="Recipe_Task">
+      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Recipe_Recipe_Task" Member="Recipe" ThisKey="Recid" OtherKey="Recid" Type="Recipe" IsForeignKey="true" />
+      <Association Name="Task_Recipe_Task" Member="Task" ThisKey="Taskid" OtherKey="Taskid" Type="Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Stove" Member="Stoves">
+    <Type Name="Stove">
+      <Column Name="Toolid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pwrtype" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Burnnum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Tool_Stove" Member="Tool" ThisKey="Toolid" OtherKey="Toolid" Type="Tool" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Task" Member="Tasks">
+    <Type Name="Task">
+      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Taskname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Taskdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Tasktime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Task_Recipe_Task" Member="Recipe_Tasks" ThisKey="Taskid" OtherKey="Taskid" Type="Recipe_Task" />
+      <Association Name="Task_Task_Food_Item" Member="Task_Food_Items" ThisKey="Taskid" OtherKey="Taskid" Type="Task_Food_Item" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Task_Food_Items" Member="Task_Food_Items">
+    <Type Name="Task_Food_Item">
+      <Column Name="Taskid" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Food_Item_Task_Food_Item" Member="Food_Item" ThisKey="Foodname" OtherKey="Foodname" Type="Food_Item" IsForeignKey="true" />
+      <Association Name="Task_Task_Food_Item" Member="Task" ThisKey="Taskid" OtherKey="Taskid" Type="Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.ADD_Allergy_User" Method="ADD_Allergy_User">
+    <Parameter Name="user" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="pass" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="food" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddRecipeToMeal" Method="AddRecipeToMeal">
+    <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="recipeName" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GET_Allergens" Method="GET_Allergens">
+    <ElementType Name="GET_AllergensResult">
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GET_Allergens_User" Method="GET_Allergens_User">
+    <Parameter Name="user" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="passwd" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="GET_Allergens_UserResult">
+      <Column Name="Foodname" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Substitution" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GET_ApplianceInfo" Method="GET_ApplianceInfo">
+    <Parameter Name="user" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="passwd" Type="System.String" DbType="NVarChar(255)" />
+    <ElementType Name="GET_ApplianceInfoResult">
+      <Column Name="Groupid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Groupname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Pwrtype" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Burnnum" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Get_Groups" Method="Get_Groups">
+    <Parameter Name="userID" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(225)" />
+    <ElementType Name="Get_GroupsResult">
+      <Column Name="Groupid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Groupname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Groupadmin" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMealForDay" Method="GetMealForDay">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="GetMealForDayResult">
+      <Column Name="Mealname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mealsize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.MealNameExists" Method="MealNameExists">
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="size" Type="System.Int32" DbType="Int" />
+    <Parameter Name="returnValue" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveMeal" Method="RemoveMeal">
+    <Parameter Name="mealName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="date" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="user" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RemoveRecipesFromMealId" Method="RemoveRecipesFromMealId">
+    <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SearchSingleKeyword" Method="SearchSingleKeyword">
+    <Parameter Name="keyword" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ordertype" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ascending" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="SearchSingleKeywordResult">
+      <Column Name="Recid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdiff" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rectime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SET_StoveInfo" Method="SET_StoveInfo">
+    <Parameter Name="user" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="passwd" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="tool" Type="System.Int32" DbType="Int" />
+    <Parameter Name="burners" Type="System.Int32" DbType="Int" />
+    <Parameter Name="pwr" Type="System.String" DbType="VarChar(50)" />
+  </Function>
+</Database>
