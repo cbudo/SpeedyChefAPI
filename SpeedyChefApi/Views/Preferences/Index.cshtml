@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link href="~/Content/chosen.min.css" rel="stylesheet" />
+<script src="~/Scripts/chosen.jquery.js"></script>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#allergens" data-toggle="tab">Allergies</a></li>
+        <li><a href="#appliances" data-toggle="tab">Appliances</a></li>
+        <li><a href="#personal" data-toggle="tab">Cooking Level</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="allergens">
+            @using (Html.BeginForm("Allergies", "Preferences", FormMethod.Post))
+            {
+                <div>
+                    <h3>Allergies</h3>
+                    <select name="tags" data-placeholder="Select any allergies that you have..." style="width:350px;" multiple class="chosen-select">
+                        <option value=""></option>
+                        <option>Peanuts</option>
+                        <option>Soy</option>
+                        <option>Milk</option>
+                    </select>
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            }
+
+        </div>
+        <div class="tab-pane fade" id="appliances">
+            @using (Html.BeginForm("Appliances", "Preferences", FormMethod.Post))
+            {
+                <div>
+                    <h3>Ovens</h3>
+                    <div class="col-xs-12">
+                        <select name="ovens">
+                            <option selected="selected">1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <h3>Burners</h3>
+                    <div class="col-xs-12">
+                        <select name="burners">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" name="Submit">Submit</button>
+            }
+        </div>
+        <div class="tab-pane fade" id="personal">
+            @using (Html.BeginForm("Personal", "Preferences", FormMethod.Post))
+            {
+                <div class="row col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-2">
+                            <h3>Novice</h3>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-6"> </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <h3>Expert</h3>
+                        </div>
+                    </div>
+                    <div id="slider"></div>
+                </div>
+            }
+
+        </div>
+    </div>
+<script>
+    $(function () {
+        $(".chosen-select").chosen();
+    })
+    $(function () {
+        $("#slider").slider({
+            min: 1,
+            max: 10,
+            step: 1,
+            value:5
+        })
+    })
+</script>
