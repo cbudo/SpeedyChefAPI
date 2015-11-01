@@ -238,13 +238,6 @@ namespace SpeedyChefApi
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SearchSingleKeyword")]
-		public ISingleResult<SearchSingleKeywordResult> SearchSingleKeyword([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(1)")] string keyword)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), keyword);
-			return ((ISingleResult<SearchSingleKeywordResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.RemoveRecipesFromMealId")]
 		public int RemoveRecipesFromMealId([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> mealId)
 		{
@@ -274,10 +267,10 @@ namespace SpeedyChefApi
 			return ((ISingleResult<GetMealForDayResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Groups")]
-		public void Get_Groups([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(225)")] string password)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Get_Groups", IsComposable=true)]
+		public object Get_Groups([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Password", DbType="NVarChar(225)")] string password)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, password);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, password).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddRecipeToMeal")]
@@ -285,6 +278,13 @@ namespace SpeedyChefApi
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mealId, recipeName);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SearchSingleKeyword")]
+		public ISingleResult<SearchSingleKeywordResult> SearchSingleKeyword([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string keyword, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string ordertype, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string ascending)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), keyword, ordertype, ascending);
+			return ((ISingleResult<SearchSingleKeywordResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3057,68 +3057,6 @@ namespace SpeedyChefApi
 		}
 	}
 	
-	public partial class SearchSingleKeywordResult
-	{
-		
-		private int _Recid;
-		
-		private string _Recname;
-		
-		private string _Recdesc;
-		
-		public SearchSingleKeywordResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recid", DbType="Int NOT NULL")]
-		public int Recid
-		{
-			get
-			{
-				return this._Recid;
-			}
-			set
-			{
-				if ((this._Recid != value))
-				{
-					this._Recid = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(255)")]
-		public string Recname
-		{
-			get
-			{
-				return this._Recname;
-			}
-			set
-			{
-				if ((this._Recname != value))
-				{
-					this._Recname = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
-		public string Recdesc
-		{
-			get
-			{
-				return this._Recdesc;
-			}
-			set
-			{
-				if ((this._Recdesc != value))
-				{
-					this._Recdesc = value;
-				}
-			}
-		}
-	}
-	
 	public partial class GetMealForDayResult
 	{
 		
@@ -3194,6 +3132,104 @@ namespace SpeedyChefApi
 				if ((this._Recdesc != value))
 				{
 					this._Recdesc = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SearchSingleKeywordResult
+	{
+		
+		private System.Nullable<int> _Recid;
+		
+		private string _Recname;
+		
+		private string _Recdesc;
+		
+		private System.Nullable<int> _Recdiff;
+		
+		private System.Nullable<int> _Rectime;
+		
+		public SearchSingleKeywordResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recid", DbType="Int")]
+		public System.Nullable<int> Recid
+		{
+			get
+			{
+				return this._Recid;
+			}
+			set
+			{
+				if ((this._Recid != value))
+				{
+					this._Recid = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recname", DbType="VarChar(50)")]
+		public string Recname
+		{
+			get
+			{
+				return this._Recname;
+			}
+			set
+			{
+				if ((this._Recname != value))
+				{
+					this._Recname = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdesc", DbType="VarChar(255)")]
+		public string Recdesc
+		{
+			get
+			{
+				return this._Recdesc;
+			}
+			set
+			{
+				if ((this._Recdesc != value))
+				{
+					this._Recdesc = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Recdiff", DbType="Int")]
+		public System.Nullable<int> Recdiff
+		{
+			get
+			{
+				return this._Recdiff;
+			}
+			set
+			{
+				if ((this._Recdiff != value))
+				{
+					this._Recdiff = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rectime", DbType="Int")]
+		public System.Nullable<int> Rectime
+		{
+			get
+			{
+				return this._Rectime;
+			}
+			set
+			{
+				if ((this._Rectime != value))
+				{
+					this._Rectime = value;
 				}
 			}
 		}

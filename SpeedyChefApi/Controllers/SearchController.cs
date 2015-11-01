@@ -48,7 +48,7 @@ namespace SpeedyChefApi.Controllers
             }
         }
 
-        public ActionResult Search(string inputKeywords)
+        public ActionResult Search(string inputKeywords, string ordertype, string ascending)
         {
             if (inputKeywords == null)
             {
@@ -65,12 +65,12 @@ namespace SpeedyChefApi.Controllers
             {
                 if (tempRes != null)
                 {
-                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer()).ToList();
+                    tempRes = tempRes.Union(scdc.SearchSingleKeyword(keyword, ordertype, ascending), new SearchSingleComparer()).ToList();
                 }
                 else 
                 {
                     List<SearchSingleKeywordResult> firstRes = new List<SearchSingleKeywordResult>();
-                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword), new SearchSingleComparer()).ToList();
+                    tempRes = firstRes.Union(scdc.SearchSingleKeyword(keyword, ordertype, ascending), new SearchSingleComparer()).ToList();
                 }
             }
             return Json(tempRes, JsonRequestBehavior.AllowGet);

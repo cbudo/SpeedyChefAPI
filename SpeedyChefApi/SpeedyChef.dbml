@@ -139,14 +139,6 @@
       <Association Name="Task_Task_Food_Item" Member="Task" ThisKey="Taskid" OtherKey="Taskid" Type="Task" IsForeignKey="true" />
     </Type>
   </Table>
-  <Function Name="dbo.SearchSingleKeyword" Method="SearchSingleKeyword">
-    <Parameter Name="keyword" Type="System.String" DbType="NVarChar(1)" />
-    <ElementType Name="SearchSingleKeywordResult">
-      <Column Name="Recid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Recname" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.RemoveRecipesFromMealId" Method="RemoveRecipesFromMealId">
     <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
@@ -175,13 +167,26 @@
       <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.Get_Groups" Method="Get_Groups">
+  <Function Name="dbo.Get_Groups" Method="Get_Groups" IsComposable="true">
     <Parameter Name="userID" Type="System.String" DbType="NVarChar(30)" />
     <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(225)" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.AddRecipeToMeal" Method="AddRecipeToMeal">
     <Parameter Name="mealId" Type="System.Int32" DbType="Int" />
     <Parameter Name="recipeName" Type="System.String" DbType="VarChar(255)" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SearchSingleKeyword" Method="SearchSingleKeyword">
+    <Parameter Name="keyword" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ordertype" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ascending" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="SearchSingleKeywordResult">
+      <Column Name="Recid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Recdesc" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Recdiff" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rectime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>
